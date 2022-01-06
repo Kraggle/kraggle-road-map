@@ -1,0 +1,92 @@
+$width: 10px; // width of the center bar
+$space: 80px; // space from the center bar to the items
+$border: 4px;
+
+.krm-item {
+  width: 66.666%;
+  position: relative;
+  padding: $space;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: calc(50% - $space);
+    bottom: -($border / 2);
+    top: -($border / 2);
+    border-width: $border;
+    border-style: solid;
+    border-color: currentColor;
+  }
+
+  .krm-title {
+    display: inline-block;
+    font-weight: 600;
+    font-size: xx-large;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .krm-digit {
+    position: absolute;
+    width: $space;
+    height: $space;
+    font-size: ($space / 2);
+    font-weight: bolder;
+    border: $border solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: ($space - 12px);
+    text-align: center;
+    top: ($space / 2);
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: $border;
+      width: $space;
+      background: currentColor;
+      top: calc(50% - ($border / 2));
+    }
+  }
+
+  &.right {
+    margin-left: 33.333%;
+
+    &::after {
+      left: 0;
+      border-radius: ($space / 2) 0 0 ($space / 2);
+      border-right-width: 0;
+    }
+
+    .krm-digit {
+      left: -($space * 2);
+
+      &::before {
+        right: -$space - $border;
+      }
+    }
+  }
+
+  &.left {
+    text-align: right;
+
+    &::after {
+      right: 0;
+      border-radius: 0 ($space / 2) ($space / 2) 0;
+      border-left-width: 0;
+    }
+
+    .krm-digit {
+      right: -($space * 2);
+
+      &::before {
+        left: -$space - $border;
+      }
+    }
+  }
+}
+
+.krm-container {
+  position: relative;
+}
