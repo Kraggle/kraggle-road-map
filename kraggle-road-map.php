@@ -16,7 +16,7 @@
  * Plugin Name:       Kraggles Road Map
  * Plugin URI:        http://kragglesites.com
  * Description:       Shortcode and section items to create roadmaps
- * Version:           1.0.1
+ * Version:           1.0.3
  * Author:            Kraggle
  * Author URI:        http://kragglesites.com/
  * License:           GPLv3
@@ -36,14 +36,14 @@ define('KRM_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('KRM_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('KRM_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-function cc_mime_types($mimes) {
+
+add_filter('upload_mimes', function($mimes) {
 	$mimes['json'] = 'application/json';
 	return $mimes;
-}
-add_filter('upload_mimes', 'cc_mime_types');
+});
 
 function krm_shortcode($attrs) {
-	$version = '1.0.2';
+	$version = '1.0.3';
 
 	extract(shortcode_atts(
 		array(
